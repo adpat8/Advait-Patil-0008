@@ -1,0 +1,153 @@
+Q1
+package dsReexam;
+
+import java.util.*;
+
+public class Q1 {
+	
+	public static int factorial(int n)
+	{
+		if(n<0)
+			return -1;
+		if(n==0|n==1)
+			return 1;
+		if(n==2)
+			return 2;
+		return n*factorial(n-1);
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter a number: ");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.println(factorial(n));
+		
+	}
+
+}
+
+Q2
+package dsReexam;
+
+import java.util.*;
+
+public class Q2 {
+	
+	public static void print(int n)
+	{
+		int a=0, b=1;
+		for(int i=0;i<n+1;i++)
+		{
+			for(int j=0;j<i;j++)
+			{
+				int c=a+b;
+				System.out.print(c+"\t");
+				a=b;
+				b=c;
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter the number of rows: ");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		print(n);
+		
+	}
+
+}
+
+Q3
+package dsReexam;
+
+public class Q3 {
+	
+	public static void pattern1(int n)
+	{
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n-i-1;j++)
+			{
+				System.out.print(" ");
+			}
+			for(int j=n;j>n-i-1;j--)
+			{
+				System.out.print(j);
+			}
+			for(int j=0;j<i;j++)
+			{
+				System.out.print(n-i+j+1);
+			}
+			System.out.println();
+		}
+		for(int i=1;i<n;i++)
+		{
+			for(int j=n-i;j<n;j++)
+			{
+				System.out.print(" ");
+			}
+			for(int j=n;j>i;j--)
+			{
+				System.out.print(j);
+			}
+			for(int j=i+1;j<n;j++)
+			{
+				System.out.print(j+1);
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void pattern2(int n)
+	{
+		for(int i=0;i<n;i++)
+		{
+			for(int j=n;j>i;j--)
+			{
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		int n=3;
+		pattern1(n);
+		System.out.println();
+		pattern2(n);
+		
+	}
+
+}
+
+Q4
+package dsReexam;
+
+public class Q4 {
+	
+	public static void print(int n)
+	{
+		if(n<2)
+			System.out.print(n);
+		else
+		{
+			System.out.print(n%2);
+			print(n/2);
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		int n=4;
+		print(n);
+		System.out.println();
+		print(12);
+		
+	}
+
+}
