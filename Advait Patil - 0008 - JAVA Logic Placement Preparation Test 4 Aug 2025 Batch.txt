@@ -1,0 +1,101 @@
+Q1
+package day5;
+
+import java.util.*;
+
+public class UniqueSortedArray {
+	
+	public static int[] findUnique(int[] arr)
+	{
+		int l=arr.length;
+		int[] narr=new int[l];
+		int p=Integer.MIN_VALUE;
+		int c=0;
+		for(int i=0;i<l;i++)
+		{
+			if(arr[i]!=p)
+			{
+				narr[c++]=arr[i];
+				p=arr[i];
+			}
+		}
+		int[] rarr=new int[c];
+		for(int i=0;i<c;i++)
+		{
+			rarr[i]=narr[i];
+		}
+		return rarr;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter number of elements in the array: ");
+		Scanner sc=new Scanner(System.in);
+		int l=sc.nextInt();
+		int[] arr=new int[l];
+		System.out.println("Enter the elements of the array: ");
+		for(int i=0;i<l;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		Arrays.sort(arr);
+		int rl=findUnique(arr).length;
+		int[] rarr=new int[rl];
+		rarr=findUnique(arr);
+		System.out.print("[");
+		for(int i=0;i<rl;i++)
+		{
+			if(i<rl-1)
+				System.out.print(rarr[i]+", ");
+			else
+				System.out.print(rarr[i]);
+		}
+		System.out.print("]");
+	}
+
+}
+
+Q2
+package day5;
+
+import java.util.*;
+
+public class MaxSubArraySum {
+	
+	public static int maxSubArraySum(int[] arr, int k)
+	{
+		int l=arr.length;
+		if(l<k)
+			return -1;
+		int msum=0;
+		for(int i=0;i<k;i++)
+		{
+			msum+=arr[i];
+		}
+		int wsum=msum;
+		for(int i=k;i<l;i++)
+		{
+			wsum=wsum+arr[i]-arr[i-k];
+			msum=Math.max(wsum, msum);
+		}
+		return msum;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter number of elements in the arry: ");
+		Scanner sc=new Scanner(System.in);
+		int l=sc.nextInt();
+		int[] arr=new int[l];
+		System.out.println("Enter the elements of the array: ");
+		for(int i=0;i<l;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("Enter the number sub-array size: ");
+		int k = sc.nextInt();
+		System.out.println("The maximum of the totals of the sub-arrays of size "+k+" is: "+maxSubArraySum(arr,k));
+		
+	}
+
+}
