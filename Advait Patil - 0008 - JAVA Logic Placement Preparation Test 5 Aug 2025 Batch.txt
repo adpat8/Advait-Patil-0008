@@ -1,0 +1,143 @@
+Q1
+
+package day6;
+
+import java.util.*;
+
+public class Q1 {
+	
+	public static int occurrence(String str, String word)
+	{
+		str=str.toLowerCase();
+		word=word.toLowerCase();
+		int count=0;
+		int index=0;
+		while((index = str.indexOf(word,index))!=-1)
+		{
+			count++;
+			index=index+word.length();
+		}
+		return count;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter some text: ");
+		Scanner sc=new Scanner(System.in);
+		String str=sc.nextLine();
+		String[] words = {"Car", "Truck"};
+		for(String w : words)
+		{
+			System.out.println("The word "+w+" occurred "+occurrence(str,w)+" times in the given text.");
+		}
+		
+	}
+
+}
+
+Q2
+
+package day6;
+
+import java.util.*;
+
+public class Q2 {
+	
+	public static int occurrence(String str, String word)
+	{
+		str=str.toLowerCase();
+		word=word.toLowerCase();
+		int count=0;
+		int index=0;
+		while((index=str.indexOf(word,index))!=-1)
+		{
+			count++;
+			index=index+word.length();
+		}
+		return count;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter some text: ");
+		Scanner sc=new Scanner(System.in);
+		String str=sc.nextLine();
+		System.out.println("Enter a word of which occurrence is to be found: ");
+		String word=sc.nextLine();
+		System.out.println("The word "+word+" occurs in the given text "+occurrence(str,word)+" times.");
+		
+	}
+
+}
+
+Q3
+
+package day6;
+
+import java.util.*;
+
+public class Q3 {
+	
+	public static boolean isPalindrome(String str)
+	{
+		char[] charr=str.toLowerCase().toCharArray();
+		int l=str.length();
+		int m=l/2;
+		boolean b=true;
+		for(int i=0;i<m;i++)
+		{
+			if(charr[i]!=charr[l-i-1])
+			{
+				b=false;
+				break;
+			}
+		}
+		return b;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter a name: ");
+		Scanner sc=new Scanner(System.in);
+		String name=sc.nextLine();
+		if(isPalindrome(name))
+			System.out.println("The name "+name+" is a palindrome");
+		else
+			System.out.println("The name "+name+" is not a palindrome");
+		
+	}
+
+}
+
+Q4
+
+package day6;
+
+import java.util.*;
+
+public class Q4 {
+	
+	public static int wordCount(String sentence)
+	{
+		int count=0;
+		char p=' ';
+		for(char c:sentence.toCharArray())
+		{
+			if(c!=' '&&p==' ')
+				count++;
+			p=c;
+		}
+		return count;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter a sentence: ");
+		Scanner sc=new Scanner(System.in);
+		String sentence=sc.nextLine();
+		System.out.println("The number of words in the entered sentence is "+wordCount(sentence)+".");
+		
+	}
+
+}
+
