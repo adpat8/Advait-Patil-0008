@@ -1,0 +1,60 @@
+Q1
+
+package day8;
+
+import java.util.*;
+
+public class Q2 {
+	
+	public static int[] removeDuplicates(int[] a, int n)
+	{
+		int[] duplicates=new int[n];
+		int c1=0,c2=0;
+		for(int i=0;i<n;i++)
+		{
+			boolean f=false;
+			for(int j=0;j<c2;j++)
+			{
+				if(a[i]==a[j])
+				{
+					f=true;
+					break;
+				}
+			}
+			if(f)
+				duplicates[c1++]=a[i];
+			else
+				a[c2++]=a[i];
+		}
+		c1=0;
+		for(int i=c2;i<n;i++)
+		{
+			a[i]=duplicates[c1++];
+		}
+		return a;
+	}
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter the number of elements in the array: ");
+		Scanner sc=new Scanner(System.in);
+		int l=sc.nextInt();
+		int[] arr=new int[l];
+		System.out.println("Enter the elements of the array: ");
+		for(int i=0;i<l;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		int[] rarr=new int[l];
+		rarr=removeDuplicates(arr,l);
+		System.out.println("Array after rearranging duplicates to the end, maintaining insertion order of unique elements is: ");
+		System.out.print("[");
+		for(int i=0;i<l-1;i++)
+		{
+			System.out.print(rarr[i]+", ");
+		}
+		System.out.print(rarr[l-1]+"]");
+		
+	}
+
+}
